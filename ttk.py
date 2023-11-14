@@ -1,13 +1,21 @@
-import tkinter as tk
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
-root = tk.Tk()
 
-b1 = ttk.Button(root, text="Button 1", bootstyle=SUCCESS)
-b1.pack(side=LEFT, padx=5, pady=10)
+class App(ttk.Window):
 
-b2 = ttk.Button(root, text="Button 2", bootstyle=(INFO, OUTLINE))
-b2.pack(side=LEFT, padx=5, pady=10)
+    def __init__(self, theme):
+        super().__init__(themename=theme)
 
-root.mainloop()
+
+        self.button_one = ttk.Button(self, text="Submit", bootstyle=SUCCESS)
+        self.button_two = ttk.Button(self, text="Cancel", bootstyle=(DANGER, OUTLINE))
+
+        self.button_one.pack(padx=5, pady=10, side=LEFT)
+        self.button_two.pack(padx=5, pady=10, side=RIGHT)
+
+
+if __name__ == "__main__":
+    app = App(theme="vapor")
+    app.place_window_center()
+    app.mainloop()
